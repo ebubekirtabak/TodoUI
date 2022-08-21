@@ -6,7 +6,7 @@ export interface SimpleInputProps {
   type: string;
   minLength: number;
   placeHolder: string;
-  onChange: () => void;
+  onChange: (value: string) => void;
   name: string;
   value: string
 }
@@ -35,7 +35,7 @@ const SimpleInput: React.VoidFunctionComponent<SimpleInputProps> = ({
         placeholder={placeHolder}
         type={ passwordVisibility ? 'text' : type } required
         data-testid="simple-input"
-        onChange={onChange} />
+        onChange={(e: React.FormEvent<HTMLInputElement>) => onChange(e.currentTarget.value)} />
       {
         type === 'password' ?
         <div 
